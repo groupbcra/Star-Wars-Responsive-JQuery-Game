@@ -29,6 +29,9 @@ $(document).ready(function() {
     console.log("Luke's Health: " + fighterObj.luke.health);
     console.log("Palpatine's Counter: " + fighterObj.palpatine.counter);
 
-    
+    // Global variables for fighter stats to updated depending on which the player chooses
+    var fighterHealth ;
+    var fighterPower ;
 
+    
 });
