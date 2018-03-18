@@ -29,9 +29,21 @@ $(document).ready(function() {
     console.log("Luke's Health: " + fighterObj.luke.health);
     console.log("Palpatine's Counter: " + fighterObj.palpatine.counter);
 
-    // Global variables for fighter stats to updated depending on which the player chooses
+    // Global variables for fighter stats to be updated depending on which the player chooses
     var fighterHealth ;
     var fighterPower ;
 
-    
+    // Object to push non-chosen fighters into as Enemies Available to Attack
+    var enemyObj = {
+
+    };
+
+    // Test to show I can create an object inside enemyObj equal to Luke's stats in fighterObj
+    enemyObj.luke = fighterObj.luke;
+    console.log("This is the luke enemyObj health: " + enemyObj.luke.health);
+
+    function startScreen() {
+        window.empty();
+        gameSetup();
+    }
 });
