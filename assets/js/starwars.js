@@ -51,47 +51,36 @@ var fighterHealth = 100;
 var enemyHealth = 100;
 var fighterPower;
 var chosenEnemy;
-
-
 // Test to show I can create an object inside enemyObj equal to Luke's stats in fighterObj
 enemyObj.luke = fighterObj.luke;
 console.log("This is the luke enemyObj health: " + enemyObj.luke.health);
-
 function startScreen() {
     //window.empty();  Brian depending on how you get your function done his might or might not be needed. As of now the HTML for the game is hard coded. Games generate the content. Let us know how you are going to do it. 
     console.log("I'm in startScreen");
     gameSetup();
 }
-
 function startFight() {
-    //  var fighterHealth =  fighterObj.chosenFighter.Health
-    //  var fighterPower =  fighterObj.chosenFighter.Power
-    //  var enemyHealth =  enemyObj.chosenEnemy.Health
-    //  var enemyPower = enemyObj.chosenEnemy.Power
-    // onclick  $(attack) function
-    chosenEnemy = fighterObj.palpatine; //<avi>  I need to be able to grab the specifc chosen character    </>
+    //var fighterHealth =  fighterObj.chosenFighter.Health;
+    //var fighterPower =  fighterObj.chosenFighter.Power;
+    //var enemyHealth =  enemyObj.chosenEnemy.Health;
+    //var enemyPower = enemyObj.chosenEnemy.Power;
+    //chosenEnemy = fighterObj.palpatine; 
     console.log(chosenEnemy);
-
-    $("#attack-btn").on("click", attack);
+    $("#attack-btn").on("click",attack);
 
 }
-
+$("#attack-btn").on("click",attack);
 function scoreBoard() {
     $("#scoreBoard").toggle("fast");
     $("#fighterHAlert").html("<strong>Fighters Health:</strong>" + " " + fighterHealth + "%");
     $("#enemyHAlert").html("<strong>Enemies Health:</strong>" + " " + enemyHealth + "%");
 }
-
 function attack() {
     scoreBoard();
     $("#scoreBoard").removeClass("d-none").addClass("d-block sticky-top");
     $("#attack-btn").text("Attack");
     console.log("I'm in attack");
-
-
-
     // Animation complete.
-
     var fighterPower = 120;
     var enemyPower = 100;
     var fighterNumb = Math.floor(Math.random() * fighterPower);
@@ -117,7 +106,6 @@ function attack() {
         i--;
     }
 }
-
 function gameSetup() {
     console.log("I'm in gameSetup");
     // function loadCharcters
