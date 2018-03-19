@@ -87,25 +87,25 @@ function attack() {
     var enemyNumb = Math.floor(Math.random() * enemyPower);
     console.log(fighterNumb);
     console.log(enemyNumb);  
-    var i = fighterHealth;  
-    while (i >= 0) {
-        if (fighterNumb >= enemyNumb) {
+        if ((fighterNumb >= enemyNumb) && (fighterHealth > 0)){
             console.log("Fighter Won");
-            enemyHealth = parseInt(enemyHealth) - 0.010;
+            enemyHealth = parseInt(enemyHealth) - 10;
 
 
-        } else if (fighterNumb === enemyNumb) {
-            console.log("Fighter Tied");
-
-        } else {
-            console.log("Fighter Lost");
-            fighterHealth = parseInt(enemyHealth) - 0.010;
+        } else if ((fighterNumb <= enemyNumb) && (enemyHealth > 0)) {
+            console.log("Fighter Loss");
+    
+            fighterHealth = parseInt(fighterHealth) - 10;
             $.extend(defeatedFighterObj, chosenEnemy);
             console.log(defeatedFighterObj);
+
+        } else {
+            console.log("Fighter Else");
+    
         }
-        i--;
-    }
 }
+console.log("OUT OF LOOP");
+    
 function gameSetup() {
     console.log("I'm in gameSetup");
     // function loadCharcters
