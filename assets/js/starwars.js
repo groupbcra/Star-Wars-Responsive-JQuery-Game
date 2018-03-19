@@ -97,11 +97,12 @@ function attack() {
     var fighterNumb = Math.floor(Math.random() * fighterPower);
     var enemyNumb = Math.floor(Math.random() * enemyPower);
     console.log(fighterNumb);
-    console.log(enemyNumb);
-    for (var j = 0; j < fighterHealth; j++) {
+    console.log(enemyNumb);  
+    var i = fighterHealth;  
+    while (i >= 0) {
         if (fighterNumb >= enemyNumb) {
             console.log("Fighter Won");
-            enemyHealth = parseFloat(enemyHealth) - 10;
+            enemyHealth = parseInt(enemyHealth) - 0.010;
 
 
         } else if (fighterNumb === enemyNumb) {
@@ -109,10 +110,11 @@ function attack() {
 
         } else {
             console.log("Fighter Lost");
-            fighterHealth = parseFloat(fighterHealth) - 10;
+            fighterHealth = parseInt(enemyHealth) - 0.010;
             $.extend(defeatedFighterObj, chosenEnemy);
             console.log(defeatedFighterObj);
         }
+        i--;
     }
 }
 
