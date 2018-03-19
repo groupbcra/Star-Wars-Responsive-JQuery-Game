@@ -60,15 +60,16 @@ function startScreen() {
     gameSetup();
 }
 function startFight() {
-    var fighterHealth =  fighterObj.chosenFighter.Health;
-    var fighterPower =  fighterObj.chosenFighter.Power;
-    var enemyHealth =  enemyObj.chosenEnemy.Health;
-    var enemyPower = enemyObj.chosenEnemy.Power;
-    chosenEnemy = fighterObj.palpatine; 
+    //var fighterHealth =  fighterObj.chosenFighter.Health;
+    //var fighterPower =  fighterObj.chosenFighter.Power;
+    //var enemyHealth =  enemyObj.chosenEnemy.Health;
+    //var enemyPower = enemyObj.chosenEnemy.Power;
+    //chosenEnemy = fighterObj.palpatine; 
     console.log(chosenEnemy);
-    $("#attack-btn").on("click", attack);
+    $("#attack-btn").on("click",attack);
 
 }
+$("#attack-btn").on("click",attack);
 function scoreBoard() {
     $("#scoreBoard").toggle("fast");
     $("#fighterHAlert").html("<strong>Fighters Health:</strong>" + " " + fighterHealth + "%");
