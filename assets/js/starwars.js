@@ -75,6 +75,16 @@ function scoreBoard() {
     $("#fighterHAlert").html("<strong>Fighters Health:</strong>" + " " + fighterHealth + "%");
     $("#enemyHAlert").html("<strong>Enemies Health:</strong>" + " " + enemyHealth + "%");
 }
+
+function nextRound(){
+console.log("in nextRound();");
+}
+function endGame(){
+    console.log("endGame()");
+    }
+    
+
+
 function attack() {
     scoreBoard();
     $("#scoreBoard").removeClass("d-none").addClass("d-block sticky-top");
@@ -87,21 +97,29 @@ function attack() {
     var enemyNumb = Math.floor(Math.random() * enemyPower);
     console.log(fighterNumb);
     console.log(enemyNumb);  
-        if ((fighterNumb >= enemyNumb) && (fighterHealth > 0)){
+        if ((fighterNumb >= enemyNumb) && ((fighterHealth > 0) && (enemyHealth > 0))){
             console.log("Fighter Won");
-            enemyHealth = parseInt(enemyHealth) - 10;
+            enemyHealth = parseInt(enemyHealth) - 40;
 
 
-        } else if ((fighterNumb <= enemyNumb) && (enemyHealth > 0)) {
+        } else if ((fighterNumb <= enemyNumb)) {
             console.log("Fighter Loss");
     
-            fighterHealth = parseInt(fighterHealth) - 10;
+            fighterHealth = parseInt(fighterHealth) - 40;
             $.extend(defeatedFighterObj, chosenEnemy);
             console.log(defeatedFighterObj);
 
         } else {
-            console.log("Fighter Else");
-    
+           if (fighterHealth > enemyHealth){
+            console.log("Fighter WIIIINNNS");
+            $("#enemyHAlert").addClass("d-none");
+            $("#fighterHAlert").html("<strong>You won with:</strong>" + " " + fighterHealth + "%" + " left.");
+nextRound();
+           } else
+           console.log("Fighter LOSSES");
+           $("#fighterHAlert").addClass("d-none");
+           $("#enemyHAlert").html("<strong>You lost with:</strong>" + " " + fighterHealth + "%" + " left.");
+           endGame();      
         }
 }
 console.log("OUT OF LOOP");
