@@ -99,13 +99,13 @@ function attack() {
     console.log(enemyNumb);  
         if ((fighterNumb >= enemyNumb) && ((fighterHealth > 0) && (enemyHealth > 0))){
             console.log("Fighter Won");
-            enemyHealth = parseInt(enemyHealth) - 40;
+            enemyHealth = parseInt(enemyHealth) - 10;
 
 
         } else if ((fighterNumb <= enemyNumb)) {
             console.log("Fighter Loss");
     
-            fighterHealth = parseInt(fighterHealth) - 40;
+            fighterHealth = parseInt(fighterHealth) - 10;
             $.extend(defeatedFighterObj, chosenEnemy);
             console.log(defeatedFighterObj);
 
@@ -113,12 +113,12 @@ function attack() {
            if (fighterHealth > enemyHealth){
             console.log("Fighter WIIIINNNS");
             $("#enemyHAlert").addClass("d-none");
-            $("#fighterHAlert").html("<strong>You won with:</strong>" + " " + fighterHealth + "%" + " left.");
+            $("#fighterHAlert").html("<strong>You won with:</strong>" + " " + fighterHealth + "%" + " left");
 nextRound();
            } else
            console.log("Fighter LOSSES");
            $("#fighterHAlert").addClass("d-none");
-           $("#enemyHAlert").html("<strong>You lost with:</strong>" + " " + fighterHealth + "%" + " left.");
+           $("#enemyHAlert").html("<strong>You lost with:</strong>" + " " + fighterHealth + "%" + " left");
            endGame();      
         }
 }
