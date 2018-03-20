@@ -15,7 +15,6 @@ var fighterImages = "<div class='col-12 py-4'>" +
 "<img id='sidious' class='img-fluid fighter reg_border px-2 py-1 mr-1' src='../Star-Wars-Responsive-JQuery-Game/assets/images/darth-vader.png' alt='' data-active='false'>" + "</div>";
 
 
-
 // Fighter stats
 var fighterObj = {
     obiWan: {
@@ -80,20 +79,23 @@ function startScreen() {
 
 function startFight() {
 // onclick function to move the images from one staging area to the next and to exchange data between the obj's 
-    $(".fighter").click(function (){
+    $("<IMG>").click(function (){
+      fightCont = $("#fighters");
       var id = $(this).attr("id");
-      if (($(this).data("active")   === false)){  // change to false to see other conditional -------------
+      if (($(this).data("active")   ===  false)){  // change to false to see other conditional -------------
    
         $(this).data("active", true);
                 $(this).addClass("d-none");
         console.log(($(this).data("active")));
         $("#yourCharacter").replaceWith( "<h3>Your Character</h3>" +  "<div class='col-12 py-2'>" + "<img id='" + id + "' src='../Star-Wars-Responsive-JQuery-Game/assets/images/" + fighterObj[id].img + "'" + "data-active='false'" +  "class='img-fluid d-block fighter activeFighter reg_border px-2 py-1 mr-1'>"  + "</div>");
      //  $("#fighters").html("");
-        $("#EATA").append( "<div id='enemies' class='col-12 d-block py-2'>" + $("#fighters").html() + "</div>");
-     $("#fighters").replaceWith("");
-     $.extend(activeObj, fighterObj[id]);
+        $("#EATA").append( "<div id='enemies' class='col-12 d-block py-2'>" + $(fightCont).html() + "</div>");
+     $("#fightCont").replaceWith("");
+activeObj.newItem = fighterObj[id];
         delete fighterObj[id];
-       
+        $(".fighter").click(function (){
+            $(this).addClass("d-none");    
+        });
     // Test your Objects 
     var strA = JSON.stringify(activeObj, null, 4); // this turns the object into a string and makes it easy to read in the console.
     console.log("active:" + strA);
@@ -139,26 +141,10 @@ function startFight() {
       }
        console.log("outside");
 
+       $("#attack-btn").on("Click")
        
 });
-
-
-
-
-
-       
-
-
-
-
-   // var chosenEnemy = $("#enemy").on("click", function (){
-     //  console.log(chosenEnemy);
-        // var idEn = $(this).attr("id");
-       // console.log(idEn);
-   // });
-  
-
-
+$("#attack-btn").on("click",attack);
 }
 
 
@@ -186,7 +172,7 @@ function attack() {
     $("#attack-btn").text("Attack");
     console.log("I'm in attack");
     // Animation complete.
-    var fighterPower = activeObj.power;
+    var fighterPower = 120 // activeObj.power;
     var enemyPower = 100;
     var fighterNumb = Math.floor(Math.random() * fighterPower);
     var enemyNumb = Math.floor(Math.random() * enemyPower);
