@@ -80,17 +80,20 @@ function startFight() {
         var fightCont = $("#fighters");
         $("#yourCharacter").replaceWith( "<h3>Your Character</h3>" + "<div class='col-12 py-2'>" + "<img src='../Star-Wars-Responsive-JQuery-Game/assets/images/" + fighterObj[id].img + "'" +  "class='img-fluid d-block fighter reg_border px-2 py-1 mr-1' id='" + id + "'>"  + "</div>");
         $(this).addClass("d-none");
-
-     $("EATA").html(fightCont.html());
+        $("#EATA").html("<h3>Choose Your Enemy</h3>" + "<div id='enemy' class='col-12 d-block py-2'>" + fightCont.html() + "</div>");
+        fightCont.html("");
     // $("#fighters").replaceWith("");
         $.extend(activeObj, fighterObj[id]);
         delete fighterObj[id];
-        console.log(fighterObj);
-        console.log(activeObj);   
+      //  console.log(fighterObj);
+    //    console.log(activeObj);   
     });
     
-   
-
+   // var chosenEnemy = $("#enemy").on("click", function (){
+     //  console.log(chosenEnemy);
+        // var idEn = $(this).attr("id");
+       // console.log(idEn);
+   // });
   
 
 
@@ -159,7 +162,7 @@ function attack() {
         }, 5000);
     }
 }
-console.log("OUT OF LOOP");
+//console.log("OUT OF LOOP");
 
 function gameSetup() {
     //console.log("I'm in gameSetup");
