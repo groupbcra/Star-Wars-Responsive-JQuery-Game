@@ -72,7 +72,7 @@ function startScreen() {
    // console.log("I'm in startScreen");
    fightCont = $("#fighters");
   
-   fightCont.html(fighterImages);
+   fightCont.html("<h3 class='remove-title'>Choose a Fighter</h3>" + fighterImages);
 
    gameSetup();
 
@@ -82,18 +82,15 @@ function startFight() {
 // onclick function to move the images from one staging area to the next and to exchange data between the obj's 
     $(".fighter").click(function (){
       var id = $(this).attr("id");
-  
-        var fightCont = $("#fighters");
-      if (($(this).data("active")   === true)){ 
+      if (($(this).data("active")   === false)){  // change to false to see other conditional -------------
    
         $(this).data("active", true);
                 $(this).addClass("d-none");
         console.log(($(this).data("active")));
         $("#yourCharacter").replaceWith( "<h3>Your Character</h3>" +  "<div class='col-12 py-2'>" + "<img id='" + id + "' src='../Star-Wars-Responsive-JQuery-Game/assets/images/" + fighterObj[id].img + "'" + "data-active='false'" +  "class='img-fluid d-block fighter activeFighter reg_border px-2 py-1 mr-1'>"  + "</div>");
-
-        $("#EATA").html( "<div id='enemies' class='col-12 d-block py-2'>" + fightCont.html() + "</div>");
-        fightCont.html("");
-    // $("#fighters").replaceWith("");
+     //  $("#fighters").html("");
+        $("#EATA").append( "<div id='enemies' class='col-12 d-block py-2'>" + $("#fighters").html() + "</div>");
+     $("#fighters").replaceWith("");
      $.extend(activeObj, fighterObj[id]);
         delete fighterObj[id];
        
@@ -109,17 +106,18 @@ function startFight() {
     
     var strD = JSON.stringify(defeatedObj, null, 4);
     console.log("defeated:" + strD);
-     } else if (($(this).data("active")   === false)){
-   //     $(this).data("active", false);
-     //   Object.apply(enemyObj, fighterObj.eID);
-      //  delete fighterObj.eID;
+     } else if (($(this).data("active")   === true)){  // change to true to see other conditional -------------
+
       fightCont = $("#fighters");
       var enemyCont = $("#attackEnemies");
-
+    
         $("#yourCharacter").replaceWith( "<h3>Your Enemy</h3>" + "<div class='col-12 py-2'>" + "<img id='" + id + "' src='../Star-Wars-Responsive-JQuery-Game/assets/images/" + fighterObj[id].img + "'" + "data-active='false'" +  "class='img-fluid d-block fighter activeEnemy reg_border px-2 py-1 mr-1'>"  + "</div>");
-        $(enemyCont).html("");
-        $(enemyCont).html("<h3>Active Enemies</h3>" + "<div id='enemies' class='col-12 d-block py-2'>" + fightCont.html() + "</div>");
         $(this).addClass("d-none");
+    
+        $(enemyCont).html("<h3>Active Enemies</h3>" + "<div id='enemies' class='col-12 d-block py-2'>" + fightCont.html() + "</div>");
+        $(".remove-title").addClass("d-none");
+        fightCont.html("");
+       
         console.log(this);
         console.log("else:");
         console.log(this);
