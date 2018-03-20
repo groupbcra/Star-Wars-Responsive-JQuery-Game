@@ -46,3 +46,6 @@ border: 1px solid rgba(63, 191, 127,0.6);
 .activeFighter{
     border: 1px solid rgba(63, 191, 127,0.6);
     }
+.activeEnemy{
+    border: 1px solid rgba(191, 63, 67,0.6);
+        }

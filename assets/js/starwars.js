@@ -5,7 +5,7 @@ $(document).ready(function () {
 });
 
 /*::::::DOM CACHE::::::*/
-
+var fightCont;
 
 /*::::::GLOBALS::::::*/
 var fighterImages = "<div class='col-12 py-4'>" + 
@@ -70,10 +70,9 @@ var fighterPower;
 function startScreen() {
     //window.empty();  Brian depending on how you get your function done his might or might not be needed. As of now the HTML for the game is hard coded. Games generate the content. Let us know how you are going to do it. 
    // console.log("I'm in startScreen");
-   var fightCont = $("#fighters");
+   fightCont = $("#fighters");
   
-   fightCont.html("<h3>Choose a Fighter</h3>" + fighterImages
-);
+   fightCont.html(fighterImages);
 
    gameSetup();
 
@@ -83,7 +82,6 @@ function startFight() {
 // onclick function to move the images from one staging area to the next and to exchange data between the obj's 
     $(".fighter").click(function (){
       var id = $(this).attr("id");
-        var enemyCont = $("#attackEnemies");
   
         var fightCont = $("#fighters");
       if (($(this).data("active")   === true)){ 
@@ -112,13 +110,14 @@ function startFight() {
     var strD = JSON.stringify(defeatedObj, null, 4);
     console.log("defeated:" + strD);
      } else if (($(this).data("active")   === false)){
-      id = $(this).attr("id");
-      console.log($(this).attr("id"));
-        $(this).data("active", false);
-        Object.apply(enemyObj, fighterObj[id]);
-        delete fighterObj[id];
-        $("#yourCharacter").replaceWith( "<h3>Your Character</h3>" + "<div class='col-12 py-2'>" + "<img id='" + id + "' src='../Star-Wars-Responsive-JQuery-Game/assets/images/" + fighterObj[id].img + "'" + "data-active='false'" +  "class='img-fluid d-block fighter activeFighter reg_border px-2 py-1 mr-1'>"  + "</div>");
+   //     $(this).data("active", false);
+     //   Object.apply(enemyObj, fighterObj.eID);
+      //  delete fighterObj.eID;
+      fightCont = $("#fighters");
+      var enemyCont = $("#attackEnemies");
 
+        $("#yourCharacter").replaceWith( "<h3>Your Enemy</h3>" + "<div class='col-12 py-2'>" + "<img id='" + id + "' src='../Star-Wars-Responsive-JQuery-Game/assets/images/" + fighterObj[id].img + "'" + "data-active='false'" +  "class='img-fluid d-block fighter activeEnemy reg_border px-2 py-1 mr-1'>"  + "</div>");
+        $(enemyCont).html("");
         $(enemyCont).html("<h3>Active Enemies</h3>" + "<div id='enemies' class='col-12 d-block py-2'>" + fightCont.html() + "</div>");
         $(this).addClass("d-none");
         console.log(this);
