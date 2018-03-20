@@ -79,7 +79,7 @@ function startScreen() {
 
 function startFight() {
 // onclick function to move the images from one staging area to the next and to exchange data between the obj's 
-    $("<IMG>").click(function (){
+    $(".fighter").click(function (){
       fightCont = $("#fighters");
       var id = $(this).attr("id");
       if (($(this).data("active")   ===  false)){  // change to false to see other conditional -------------
@@ -88,9 +88,10 @@ function startFight() {
                 $(this).addClass("d-none");
         console.log(($(this).data("active")));
         $("#yourCharacter").replaceWith( "<h3>Your Character</h3>" +  "<div class='col-12 py-2'>" + "<img id='" + id + "' src='../Star-Wars-Responsive-JQuery-Game/assets/images/" + fighterObj[id].img + "'" + "data-active='false'" +  "class='img-fluid d-block fighter activeFighter reg_border px-2 py-1 mr-1'>"  + "</div>");
-     //  $("#fighters").html("");
+ 
         $("#EATA").append( "<div id='enemies' class='col-12 d-block py-2'>" + $(fightCont).html() + "</div>");
-     $("#fightCont").replaceWith("");
+        $("#fighters").html("");
+        $("#fightCont").replaceWith("");
 activeObj.newItem = fighterObj[id];
         delete fighterObj[id];
         $(".fighter").click(function (){
