@@ -35,3 +35,14 @@ border: 1px solid rgba(192,192,192,0.6);
 #scoreBoard{
     opacity: .6;
 }
+
+.fighter:hover{
+cursor: pointer;
+border: 1px solid rgba(63, 191, 127,0.6);
+}
+.fighter:active{
+    border: 1px solid rgba(191, 63, 67,0.6);
+}
+.activeFighter{
+    border: 1px solid rgba(63, 191, 127,0.6);
+    }
